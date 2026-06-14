@@ -145,6 +145,7 @@ imports =
     # --- System Fonts ---------------------------------------------------
     fonts.packages = with pkgs; [
 	nerd-fonts.jetbrains-mono
+	nerd-fonts.fira-code
     ];
 
 
@@ -233,6 +234,7 @@ imports =
 		(python3.withPackages (ps: with ps; [ ps.jinja2 ]))
 		cmake glib pkg-config networkmanager alsa-lib
 		ninja qt6.qtbase qt6.qtdeclarative
+		vscodium
 	    ]; }"
 	    ${pkgs.nix}/bin/nix-shell -I nixpkgs=${pkgs.path} -E "$nixExpr" --run "${pkgs.bash}/bin/bash /home/quisiou/Dotfiles/setup.sh"
     	'';
