@@ -191,33 +191,28 @@ imports =
     	after = [ "network-online.target" ];
     	wants = [ "network-online.target" ];
     	wantedBy = [ "multi-user.target" ];
+	restartIfChanged = true;
+	unitConfig = {
+	    ConditionPathExists = "!/home/quisiou/Dotfiles";
+	};
     	serviceConfig = {
     	    Type = "oneshot";
-    	    RemainAfterExit = true;
-    	    User = "quisiou";
+    	    User = "root";
             StandardOutput = "journal+console";
             StandardError = "journal+console";
     	};
     	script = ''
-    	    if [ -d "/home/quisiou/Dotfiles" ]; then
-	    	echo "Dotfiles already cloned, skipping..."
-		exit 0
-	    fi
-
 	    echo "Cloning dotfiles..."
-            ${pkgs.git}/bin/git clone https://github.com/QuiSioU/Dotfiles.git /home/quisiou/Dotfiles
+            ${pkgs.sudo}/bin/sudo -u quisiou ${pkgs.git}/bin/git clone https://github.com/QuiSioU/Dotfiles.git /home/quisiou/Dotfiles
+	    ${pkgs.systemd}/bin/systemctl start dotfiles-setup
     	'';
     };
 
     # Setup dotfiles
     systemd.services.dotfiles-setup = {
     	description = "Set up dotfiles";
-    	after = [ "dotfiles-clone.service" ];
-    	requires = [ "dotfiles-clone.service" ];
-    	wantedBy = [ "multi-user.target" ];
     	serviceConfig = {
     	    Type = "oneshot";
-    	    RemainAfterExit = true;
     	    User = "quisiou";
             StandardOutput = "journal+console";
             StandardError = "journal+console";
@@ -236,7 +231,7 @@ imports =
 		ninja qt6.qtbase qt6.qtdeclarative
 		vscodium
 	    ]; }"
-	    ${pkgs.nix}/bin/nix-shell -I nixpkgs=${pkgs.path} -E "$nixExpr" --run "${pkgs.bash}/bin/bash /home/quisiou/Dotfiles/setup.sh"
+	    ${pkgs.nix}/bin/nix-shell -I nixpkgs=${pkgs.path} -E "$nixExpr" --run "${pkgs.bash}/bin/bash /home/quisiou/Dotfiles/setup.sh -f"
     	'';
     };
 
