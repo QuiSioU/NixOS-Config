@@ -154,7 +154,11 @@ imports =
         # Basic utilities
         bash
 	wget curl bat
-	python3
+
+	(python3.withPackages (ps: with ps; [
+	    jinja2
+	]))
+
 	ffmpeg _7zz-rar jq poppler fd ripgrep fzf zoxide resvg imagemagick
 
         # Text editors
@@ -223,15 +227,15 @@ imports =
 		exit 0
 	    fi
 
+	    if [ ! -f "/home/quisiou/Dotfiles/setup.sh" ]; then
+	        echo "Setup script not found, skipping..."
+		exit 0
+	    fi
+
 	    echo "Running dotfiles setup..."
-            nixExpr="with import ${pkgs.path} {}; mkShell { buildInputs = [
-	    	bash
-		(python3.withPackages (ps: with ps; [ ps.jinja2 ]))
-		cmake glib pkg-config networkmanager alsa-lib
-		ninja qt6.qtbase qt6.qtdeclarative
-		vscodium
-	    ]; }"
-	    ${pkgs.nix}/bin/nix-shell -I nixpkgs=${pkgs.path} -E "$nixExpr" --run "${pkgs.bash}/bin/bash /home/quisiou/Dotfiles/setup.sh -f"
+	    ${pkgs.nix}/bin/nix-shell -I nixpkgs=${pkgs.path} \
+	        -p cmake glib pkg-config networkmanager alsa-lib ninja qt6.qtbase qt6.qtdeclarative \
+	        --run "${pkgs.bash}/bin/bash /home/quisiou/Dotfiles/setup.sh -f"
     	'';
     };
 
