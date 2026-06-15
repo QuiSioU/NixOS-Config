@@ -150,6 +150,18 @@ imports =
 
 
     # --- System packages ------------------------------------------------
+    # To expose a single binary from a package without installing the whole thing,
+    # use runCommand (for one binary) or linkFarm (for multiple):
+
+    # (pkgs.runCommand "name" { } ''
+    #     mkdir -p $out/bin
+    #     ln -s ${pkgs.some-package}/bin/binary $out/bin/binary
+    # '')
+
+    # (pkgs.linkFarm "name" [
+    #     { name = "bin/binary"; path = "${pkgs.some-package}/bin/binary"; }
+    # ])
+
     environment.systemPackages = with pkgs; [
         # Basic utilities
         bash
@@ -177,6 +189,13 @@ imports =
 
         # Hyprland ecosystem
         hyprshot wl-clipboard cliphist
+
+	# Language servers
+	clang-tools
+	(runCommand "qmlls" { } ''
+	    mkdir -p $out/bin
+	    ln -s ${qt6.qtdeclarative}/bin/qmlls $out/bin/qmlls
+	'')
 
         # Desktop GUI
         awww eww quickshell
