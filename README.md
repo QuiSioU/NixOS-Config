@@ -12,4 +12,5 @@
 - Fix in NixOS kitty's exit confirmation on Super+X
 - Fix in NixOS cursor being hyprland instead of Adwaita
 - Automate NixOS garbage collector to run once per week, maybe on sundays
+- Set NixOS config for GPU-Screen-Recorder directly on nix files
 

@@ -120,6 +120,10 @@ imports =
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
+    # Specific outdated package versions required by other packages
+    nixpkgs.config.permittedInsecurePackages = [
+	"electron-39.8.10"
+    ];
 
     # --- Programs -------------------------------------------------------
     programs.hyprland = {           		# Default window manager
@@ -204,7 +208,8 @@ imports =
         awww eww quickshell
 
 	# Other stuff
-	gpu-screen-recorder
+	gpu-screen-recorder-gtk
+	bitwarden-desktop
 	mpv
 	imv
     ];
