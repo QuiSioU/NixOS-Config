@@ -12,8 +12,8 @@
         # Include the results of the hardware scan.
         ./hardware-configuration.nix
 
-	# Modules
-	../../modules/boot.nix
+    # Modules
+    ../../modules/boot.nix
         ../../modules/video.nix
         ../../modules/networking.nix
         ../../modules/locale.nix
@@ -55,7 +55,7 @@
     # --- System packages ------------------------------------------------
     # Specific outdated package versions required by other packages
     nixpkgs.config.permittedInsecurePackages = [
-	"electron-39.8.10"
+        "electron-39.8.10"
     ];
 
     # To expose a single binary from a package without installing the whole thing,
@@ -73,13 +73,13 @@
     environment.systemPackages = with pkgs; [
         # Basic utilities
         bash
-	wget curl bat
+        wget curl bat duf dust
 
-	(python3.withPackages (ps: with ps; [
-	    jinja2
-	]))
+        (python3.withPackages (ps: with ps; [
+            jinja2
+        ]))
 
-	ffmpeg _7zz-rar jq poppler fd ripgrep fzf zoxide resvg imagemagick
+        ffmpeg _7zz-rar jq poppler fd ripgrep fzf zoxide resvg imagemagick
 
         # Text editors
         vscodium
@@ -87,10 +87,10 @@
         # Terminal (and tools)
         kitty starship fastfetch
 
-	# Terminal text editor
-	(yazi.override {
-	    _7zz = _7zz-rar;  # Support for RAR extraction
-	})
+        # Terminal text editor
+        (yazi.override {
+            _7zz = _7zz-rar;  # Support for RAR extraction
+        })
 
         # System monitors
         btop brightnessctl
@@ -98,19 +98,19 @@
         # Hyprland ecosystem
         hyprshot wl-clipboard cliphist
 
-	# Language servers
-	clang-tools
-	(runCommand "qmlls" { } ''
-	    mkdir -p $out/bin
-	    ln -s ${qt6.qtdeclarative}/bin/qmlls $out/bin/qmlls
-	'')
+        # Language servers
+        clang-tools
+        (runCommand "qmlls" { } ''
+            mkdir -p $out/bin
+            ln -s ${qt6.qtdeclarative}/bin/qmlls $out/bin/qmlls
+        '')
 
         # Desktop GUI
         awww eww quickshell
 
-	# Other stuff
-	bitwarden-desktop
-	mpv
-	imv
+        # Other stuff
+        bitwarden-desktop
+        mpv
+        imv
     ];
 }
