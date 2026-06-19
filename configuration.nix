@@ -1,1 +1,0 @@
-hosts/chirimbolo/configuration.nix
