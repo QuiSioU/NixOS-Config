@@ -26,6 +26,10 @@
     ];
 
 
+    # --- Add flakes support ---------------------------------------------
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+
     # --- Networking hostname --------------------------------------------
     networking.hostName = "chirimbolo";
 

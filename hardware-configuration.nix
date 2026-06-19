@@ -1,0 +1,1 @@
+hosts/chirimbolo/hardware-configuration.nix
