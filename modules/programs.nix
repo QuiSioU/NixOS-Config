@@ -12,6 +12,9 @@
         enable = true;
         remotePlay.openFirewall = true;
         gamescopeSession.enable = true; 	    # better gaming performance
+        extraCompatPackages = with pkgs; [
+            proton-ge-bin
+        ];
     };
     programs.bash = {
         completion.enable = true;
