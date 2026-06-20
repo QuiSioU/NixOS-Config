@@ -11,4 +11,13 @@
             nrb = "sudo nixos-rebuild dry-build --flake /home/quisiou/NixOS-Config#chirimbolo";
         };
     };
+    programs.git = {
+        enable = true;
+        settings = {
+            user = {
+                name = "QuiSioU";
+                email = "marco.casteleiro@gmail.com";
+            };
+        };
+    };
 }

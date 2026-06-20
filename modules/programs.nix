@@ -13,13 +13,4 @@
         gamescopeSession.enable = true; 	# better gaming performance
     };
     programs.gpu-screen-recorder.enable = true;
-    programs.git = {
-        enable = true;
-        config = {
-            user = {
-                name = "QuiSioU";
-                email = "marco.casteleiro@gmail.com";
-            };
-        };
-    };
 }
