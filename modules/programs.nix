@@ -3,14 +3,21 @@
 { config, pkgs, lib, ... }:
 
 {
-    programs.hyprland = {           		# Default window manager
+    programs.gpu-screen-recorder.enable = true; # Self-explanatory, innit?
+    programs.hyprland = {           		    # Default window manager
         enable = true;
         xwayland.enable = true;
     };
-    programs.steam = {                  	# Gaming platform
+    programs.steam = {                  	    # Gaming platform
         enable = true;
         remotePlay.openFirewall = true;
-        gamescopeSession.enable = true; 	# better gaming performance
+        gamescopeSession.enable = true; 	    # better gaming performance
     };
-    programs.gpu-screen-recorder.enable = true;
+    programs.bash = {
+        completion.enable = true;
+        shellAliases = {
+            nrs = "sudo nixos-rebuild switch    --flake /home/quisiou/NixOS-Config#chirimbolo";
+            nrb = "sudo nixos-rebuild dry-build --flake /home/quisiou/NixOS-Config#chirimbolo";
+        };
+    };
 }
