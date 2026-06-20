@@ -26,12 +26,13 @@
         # Hyprland ecosystem
         hyprshot wl-clipboard cliphist
 
-        # Language servers
+        # Language support and LSP
         clang-tools
         (runCommand "qmlls" { } ''
             mkdir -p $out/bin
             ln -s ${qt6.qtdeclarative}/bin/qmlls $out/bin/qmlls
         '')
+        texlive.combined.scheme-medium
 
         # Desktop GUI
         awww eww quickshell
