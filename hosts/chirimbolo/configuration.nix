@@ -25,6 +25,13 @@
     ];
 
 
+    # --- Boot kernel parameters -----------------------------------------
+    boot.kernelParams = [
+        "nvidia_drm.modeset=1"
+        "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    ];
+
+
     # --- Hybrid NVIDIA/AMD graphics -------------------------------------
     hardware.nvidia = {
         modesetting.enable = true;
