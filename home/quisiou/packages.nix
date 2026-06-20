@@ -12,6 +12,16 @@
         # Text editors
         vscodium neovim
 
+        # Image editors
+        gimp inkscape
+
+        # Music
+        musescore muse-sounds-manager
+        spotify
+
+        # Emulators
+        ryubing
+
         # Terminal (and tools)
         kitty starship fastfetch
 
