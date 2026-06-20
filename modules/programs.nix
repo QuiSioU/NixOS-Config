@@ -7,15 +7,6 @@
         enable = true;
         xwayland.enable = true;
     };
-    programs.neovim.enable = true;      	# Texterminal text editor
-    programs.bash = {
-        completion.enable = true;           # Self-explanatory, innit?
-        shellAliases = {
-            nrs = "sudo nixos-rebuild switch    --flake /home/quisiou/NixOS-Config#chirimbolo";
-            nrb = "sudo nixos-rebuild dry-build --flake /home/quisiou/NixOS-Config#chirimbolo";
-        };
-    };
-    programs.firefox.enable = true;     	# Web browser
     programs.steam = {                  	# Gaming platform
         enable = true;
         remotePlay.openFirewall = true;

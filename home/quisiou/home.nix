@@ -7,6 +7,7 @@
     imports = [
         ./packages.nix
         ./services.nix
+        ./scripts.nix
     ];
 
     home.username = "quisiou";

@@ -10,7 +10,7 @@
         _7zz-rar
 
         # Text editors
-        vscodium
+        vscodium neovim
 
         # Terminal (and tools)
         kitty starship fastfetch
