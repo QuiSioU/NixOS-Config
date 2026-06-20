@@ -12,9 +12,8 @@
         # Include the results of the hardware scan.
         ./hardware-configuration.nix
 
-    # Modules
-    ../../modules/boot.nix
-        ../../modules/video.nix
+        # Modules
+        ../../modules/boot.nix
         ../../modules/networking.nix
         ../../modules/locale.nix
         ../../modules/audio.nix
@@ -24,6 +23,39 @@
         ../../modules/services.nix
         ../../modules/users.nix
     ];
+
+
+    # --- Hybrid NVIDIA/AMD graphics -------------------------------------
+    hardware.nvidia = {
+        modesetting.enable = true;
+        powerManagement.enable = true;          # needed for suspend/resume
+        powerManagement.finegrained = false;    # set true if you want PRIME offload on-demand
+        open = true;
+        nvidiaSettings = true;
+        package = config.boot.kernelPackages.nvidiaPackages.latest;
+
+        prime = {
+            offload = {
+                enable = true;              # GPU on-demand (saves battery)
+                enableOffloadCmd = true;    # adds `nvidia-offload` helper
+            };
+
+            amdgpuBusId    = "PCI:101:0:0"; # 65:00.0 → 0x65 = 101 decimal
+            nvidiaBusId    = "PCI:1:0:0";   # 01:00.0 → already decimal
+        };
+    };
+
+    # amdgpu needs hardware.opengl (renamed to graphics in 24.05+)
+    hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+        extraPackages = with pkgs; [
+            rocmPackages.clr.icd
+        ];
+    };
+
+    # Load both amdgpu + nvidia
+    services.xserver.videoDrivers = [ "nvidia" ];
 
 
     # --- Add flakes support ---------------------------------------------
