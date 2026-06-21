@@ -15,6 +15,9 @@
         # Image editors
         gimp inkscape
 
+        # Proton compatibility layer
+        protonup-qt
+
         # Music
         musescore muse-sounds-manager
         spotify

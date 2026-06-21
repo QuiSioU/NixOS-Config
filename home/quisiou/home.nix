@@ -10,6 +10,7 @@
         ./scripts.nix
         ./services.nix
         ./theme.nix
+        ./variables.nix
     ];
 
     home.username = "quisiou";
