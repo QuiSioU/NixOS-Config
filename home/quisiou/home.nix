@@ -9,6 +9,7 @@
         ./programs.nix
         ./scripts.nix
         ./services.nix
+        ./theme.nix
     ];
 
     home.username = "quisiou";
