@@ -23,4 +23,8 @@
             nrb = "sudo nixos-rebuild dry-build --flake /home/quisiou/NixOS-Config#chirimbolo";
         };
     };
+    programs.obs-studio = {
+        enable = true;
+        enableVirtualCamera = true;
+    };
 }
