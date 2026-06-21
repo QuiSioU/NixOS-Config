@@ -7,8 +7,8 @@
 - Use toml's meta name as entry name in quickshell theme listview
 - Fix control center 1st app always opening on Workspace 1
 - Fix in NixOS kitty's exit confirmation on Super+X
-- Fix in NixOS cursor being hyprland instead of Adwaita
 - Automate NixOS garbage collector to run once per week, maybe on sundays
-- Set NixOS config for GPU-Screen-Recorder to run as CLI, not GTK's GUI
+- Set NixOS config for GPU-Screen-Recorder replay to run as script, only when games are
+  running. I have OBS for normal recordings.
 - Add automatic SSH key generation for github
 
