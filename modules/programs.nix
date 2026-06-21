@@ -16,6 +16,7 @@
             proton-ge-bin
         ];
     };
+    programs.gamemode.enable = true;            # Gamemode for steam games
     programs.bash = {
         completion.enable = true;
         shellAliases = {

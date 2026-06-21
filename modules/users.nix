@@ -6,7 +6,13 @@
     users.users."quisiou" = {
         isNormalUser = true;
         description = "quisiou";
-        extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
+        extraGroups = [
+            "wheel"
+            "networkmanager"
+            "video"
+            "audio"
+            "gamemode"
+        ];
         shell = pkgs.bash;
     };
 }
