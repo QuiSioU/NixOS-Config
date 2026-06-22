@@ -11,8 +11,8 @@
 - Set NixOS config for GPU-Screen-Recorder replay to run as script, only when games are
   running. I have OBS for normal recordings.
 - Add automatic SSH key generation for github, making Dotfiles then pull via SSH
-- Configure Hyprland dotfiles in such a way that you don't have to rewrite a hole block
-  just for one setting.
+- Configure Hyprland dotfiles in such a way that you don't have to rewrite a hole block just for one setting.
+- (Maybe) Add keyring to insert github SSH once per session
 
 # Game launch options
 ## Geometry Dash
