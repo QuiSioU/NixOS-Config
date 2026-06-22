@@ -10,7 +10,7 @@
         _7zz-rar
 
         # Text editors
-        vscodium neovim
+        neovim
 
         # Image editors
         gimp inkscape
