@@ -2,8 +2,32 @@
 
 { config, pkgs, lib, ... }:
 
+let
+    mkFirefoxAddon = { name, addonId, url, hash }:
+    pkgs.stdenv.mkDerivation {
+        inherit name;
+        src = pkgs.fetchurl { inherit url hash; };
+        dontUnpack = true;
+        installPhase = ''
+            mkdir -p $out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}
+            cp $src $out/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/${addonId}.xpi
+        '';
+        passthru = { inherit addonId; };
+        meta.description = name;
+    };
+in
 {
-    programs.firefox.enable = true;     # Web browser
+    programs.firefox = {
+        enable = true;
+        globalExtensions = [
+            (mkFirefoxAddon {
+                name = "vimium";
+                addonId = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
+                url = "https://addons.mozilla.org/firefox/downloads/file/4717567/vimium_ff-2.4.2.xpi";
+                hash = "sha256-Ex4qZ1gOeukSWrGXgRWeYUCfrEe0Qfwngqq3Y5bq0ZY=";
+            })
+        ];
+    };
     programs.git = {
         enable = true;
         settings = {
