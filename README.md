@@ -12,6 +12,8 @@
   running. I have OBS for normal recordings.
 - Add automatic SSH key generation for github, making Dotfiles then pull via SSH
 - Configure Hyprland dotfiles in such a way that you don't have to rewrite a hole block just for one setting.
+- Add orbit menu for favourite apps
+- Add yazi bookmarks (or the equivalent goto)
 - (Maybe) Add keyring to insert github SSH once per session
 
 # Game launch options

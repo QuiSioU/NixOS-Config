@@ -15,6 +15,9 @@
         # Image editors
         gimp inkscape
 
+        # Other editors
+        blender
+
         # Proton compatibility layer
         protonup-qt
 
@@ -28,28 +31,24 @@
         # Terminal (and tools)
         kitty starship fastfetch
 
-        # Terminal text editor
-        (yazi.override {
-            _7zz = _7zz-rar;  # Support for RAR extraction
-        })
+        # File managers
+        (yazi.override { _7zz = _7zz-rar; })    # Yazi with RAR extraction support
 
         # System monitors
         btop brightnessctl
 
-        # Hyprland ecosystem
+        # Desktop ecosystem
         hyprshot wl-clipboard cliphist
+        awww eww quickshell
 
         # Language support and LSP
         clang-tools
+        texlive.combined.scheme-medium
         (runCommand "qmlls" { } ''
             mkdir -p $out/bin
             ln -s ${qt6.qtdeclarative}/bin/qmlls $out/bin/qmlls
-        '')
-        texlive.combined.scheme-medium
-
-        # Desktop GUI
-        awww eww quickshell
-
+        '') # Qt's QML lsp
+        
         # Other stuff
         bitwarden-desktop
         mpv
