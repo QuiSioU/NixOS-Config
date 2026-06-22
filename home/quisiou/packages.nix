@@ -27,6 +27,7 @@
 
         # Emulators
         ryubing
+        dolphin-emu
 
         # Terminal (and tools)
         kitty starship fastfetch

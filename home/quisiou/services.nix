@@ -44,6 +44,5 @@
             StandardOutput = "journal+console";
             StandardError = "journal+console";
         };
-        Install.WantedBy = [ "default.target" ];
     };
 }
