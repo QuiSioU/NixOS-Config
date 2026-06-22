@@ -17,17 +17,6 @@ let
     };
 in
 {
-    programs.firefox = {
-        enable = true;
-        globalExtensions = [
-            (mkFirefoxAddon {
-                name = "vimium";
-                addonId = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
-                url = "https://addons.mozilla.org/firefox/downloads/file/4717567/vimium_ff-2.4.2.xpi";
-                hash = "sha256-Ex4qZ1gOeukSWrGXgRWeYUCfrEe0Qfwngqq3Y5bq0ZY=";
-            })
-        ];
-    };
     programs.git = {
         enable = true;
         settings = {
@@ -43,6 +32,44 @@ in
             autoUpdate = true;
             autoUpdateNotification = true;
             notifyAboutUpdates = true;
+        };
+    };
+    programs.firefox = {
+        enable = true;
+        globalExtensions = [
+            (mkFirefoxAddon {
+                name = "vimium";
+                addonId = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
+                url = "https://addons.mozilla.org/firefox/downloads/file/4717567/vimium_ff-2.4.2.xpi";
+                hash = "sha256-Ex4qZ1gOeukSWrGXgRWeYUCfrEe0Qfwngqq3Y5bq0ZY=";
+            })
+        ];
+        profiles."quisiou".bookmarks = {
+            force = true;
+            settings = [{
+                toolbar = true;
+                bookmarks = [
+                    {
+                        name = "NixOS";
+                        bookmarks = [
+                            {
+                                name = "Search";
+                                url = "https://search.nixos.org";
+                            }
+                            {
+                                name = "Home Manager";
+                                tags = [ "home" "manager" ];
+                                url = "https://nix-community.github.io/home-manager/options/home-manager/";
+                            }
+                        ];
+                    }
+                    "separator"
+                    {
+                        name = "GitHub";
+                        url = "https://github.com";
+                    }
+                ];
+            }];
         };
     };
 }
