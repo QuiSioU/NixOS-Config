@@ -77,26 +77,30 @@ in
     };
     programs.vscodium = {
         enable = true;
-        profiles.default.extensions = with pkgs.vscode-marketplace; [
+
+        profiles.default.extensions =
+        (with pkgs.vscode-extensions; [
             llvm-vs-code-extensions.vscode-clangd
             twxs.cmake
             ms-toolsai.jupyter
-            # ms-toolsai.jupyter-renderers
-            # ms-toolsai.jupyter-keymap
-            # ms-toolsai.vscode-jupyter-slideshow
-            # ms-toolsai.vscode-jupyter-cell-tags
+            ms-toolsai.jupyter-renderers
+            ms-toolsai.vscode-jupyter-cell-tags
+            ms-toolsai.vscode-jupyter-slideshow
+            ms-toolsai.jupyter-keymap
             james-yu.latex-workshop
             sumneko.lua
-            ms-pyright.pyright
             ms-python.python
-            # ms-python.vscode-pylance
-            # ms-python.debugpy
-            # ms-python.vscode-python-envs
+            ms-python.vscode-pylance
+            ms-python.debugpy
+            ms-python.vscode-python-envs
             mechatroner.rainbow-csv
             tombi-toml.tombi
+        ])
+        ++
+        (with pkgs.vscode-marketplace; [
             theqtcompany.qt-core
             theqtcompany.qt-qml
             eww-yuck.yuck
-        ];
+        ]);
     };
 }
