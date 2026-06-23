@@ -2,7 +2,6 @@
 
 
 # TODO
-- Try to use NixOS-like management of vscodium extensions + local extensions (color theme)
 - Somehow make changing theme update the ones in vscodium (or add in case of not existing)
 - Use toml's meta name as entry name in quickshell theme listview
 - Fix control center 1st app always opening on Workspace 1
@@ -14,6 +13,7 @@
 - Configure Hyprland dotfiles in such a way that you don't have to rewrite a hole block just for one setting.
 - Add orbit menu for favourite apps
 - Add yazi bookmarks (or the equivalent goto)
+- Find a way to make VSCodium compatible with Jupyter Notebooks.
 - (Maybe) Add keyring to insert github SSH once per session
 
 # Game launch options
