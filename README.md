@@ -2,6 +2,7 @@
 
 
 # TODO
+- Set default apps for different file types.
 - Somehow make changing theme update the ones in vscodium (or add in case of not
   existing).
 - Use toml's meta name as entry name in quickshell theme listview.
