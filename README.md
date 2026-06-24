@@ -15,6 +15,7 @@
 - Add yazi bookmarks (or the equivalent goto).
 - Find a way to make VSCodium compatible with Jupyter Notebooks.
 - Switch from bash to ZSH shell in dotfiles.
+- Make fastfetch colors dependant on elysian theme (jinja2 template).
 - (Maybe) Add keyring to insert github SSH once per session.
 
 # Game launch options
