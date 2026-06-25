@@ -1,9 +1,9 @@
 [//]: #(README.md)
 
 
-# TODO
-## NixOS configuration
-- Set default apps for different file types.
+## TODO
+### NixOS configuration
+- Set default apps for different file types (including EDITOR).
 - Fix in NixOS kitty's exit confirmation on Super+X.
 - Automate NixOS garbage collector to run once per week, maybe on sundays.
 - Set NixOS config for GSR replay to run as script, only when games are running. I have OBS for normal recordings.
@@ -14,7 +14,7 @@
 - (Maybe) Add keyring to insert github SSH once per session.
 - (Linux 7.2) Setup webcam.
 
-## Dotfiles
+### Dotfiles
 - Somehow make changing theme update the ones in vscodium (or add in case of not existing).
 - Use toml's meta name as entry name in quickshell theme listview.
 - Fix control center 1st app always opening on Workspace 1.
@@ -28,13 +28,12 @@
 
 ---
 
-# Game launch options
-## Geometry Dash
+## Game launch options
+### Geometry Dash
 `WINEDLLOVERRIDES="xinput1_4=n,b" %command%`
 
-## Rocket League
+### Rocket League
 `WINEDLLOVERRIDES="winmm=n,b" __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia gamemoderun %command% -NoIPv6`
 
-## The Witcher 3
+### The Witcher 3
 `__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only PROTON_ENABLE_WAYLAND=1 DXVK_ASYNC=1 PROTON_ENABLE_NGX_UPDATER=1 gamemoderun %command% --launcher-skip`
-
