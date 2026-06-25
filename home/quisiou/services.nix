@@ -4,6 +4,8 @@
 { config, pkgs, lib, ... }:
 
 {
+    services.ssh-agent.enable = true;
+
     systemd.user.services.dotfiles-clone = {
         Unit = {
             Description = "Clone dotfiles repository from github";
