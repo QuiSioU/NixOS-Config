@@ -17,8 +17,9 @@
         ];
     };
     programs.gamemode.enable = true;            # Gamemode for steam games
-    programs.bash = {
-        completion.enable = true;
+    programs.zsh = {
+        enable = true;
+        enableCompletion = true;
         shellAliases = {
             nrs = "sudo nixos-rebuild switch    --flake /home/quisiou/NixOS-Config#chirimbolo";
             nrb = "sudo nixos-rebuild dry-build --flake /home/quisiou/NixOS-Config#chirimbolo";

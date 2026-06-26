@@ -13,6 +13,6 @@
             "audio"
             "gamemode"
         ];
-        shell = pkgs.bash;
+        shell = pkgs.zsh;
     };
 }

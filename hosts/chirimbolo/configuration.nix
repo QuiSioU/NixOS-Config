@@ -111,7 +111,7 @@
 
     environment.systemPackages = with pkgs; [
         # Basic utilities
-        bash wget curl
+        zsh wget curl
 
         # Python3 with some libraries
         (python3.withPackages (ps: with ps; [ jinja2 ]))

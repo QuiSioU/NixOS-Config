@@ -21,7 +21,6 @@
 - Configure Hyprland dotfiles in such a way that you don't have to rewrite a whole block just for one setting.
 - Add orbit menu for favourite apps.
 - Add yazi bookmarks (or the equivalent goto).
-- Switch from bash to ZSH shell.
 - Make fastfetch colors depend on elysian theme (jinja2 template).
 - Compact launcher and new topbar into single transforming bubbles.
 - Make lock screen (not login, lock).
