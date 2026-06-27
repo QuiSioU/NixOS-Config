@@ -23,6 +23,8 @@
 - Make fastfetch colors depend on elysian theme (jinja2 template).
 - Compact launcher and new topbar into single transforming bubbles.
 - Make lock screen (not login, lock).
+- Implement secondary actions on launcher (right-click/shitf+Enter), like desktop files provide.
+- Make zsh default terminal profile in VSCodium.
 
 ---
 

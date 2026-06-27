@@ -22,6 +22,37 @@
                 Keywords = "system;process;task";
             };
         };
+        firefox = {
+            type = "Application";
+            name = "Firefox";
+            genericName = "Web Browser";
+            comment = "Fast and private browser";
+            icon = "firefox";
+            exec = "firefox --name firefox %U";
+            terminal = false;
+            startupNotify = true;
+            categories = [
+                "Network"
+                "WebBrowser"
+            ];
+            settings = {
+                Keywords = "Internet;WWW;Browser;Web;Explorer";
+            };
+            actions = {
+                "new-private-window" = {
+                    name = "New Private Window";
+                    exec = "firefox --private-window %U";
+                };
+                "new-window" = {
+                    name = "New Window";
+                    exec = "firefox --new-window %U";
+                };
+                "profile-manager-window" = {
+                    name = "Profile Manager";
+                    exec = "firefox --ProfileManager";
+                };
+            };
+        };
         nvim = {
             type = "Application";
             name = "Neovim";
