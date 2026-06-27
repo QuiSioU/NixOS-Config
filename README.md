@@ -9,7 +9,6 @@
 - Set NixOS config for GSR replay to run as script, only when games are running. I have OBS for normal recordings.
 - Add automatic SSH key generation for github, making Dotfiles then pull via SSH.
 - Find a way to make VSCodium compatible with Jupyter Notebooks.
-- Edit `.desktop` files from home manager with [xdg.desktopEntries](https://nix-community.github.io/home-manager/options/home-manager/xdg.html#opt-xdg.desktopEntries).
 - Try to make ge-proton-bin be installed directly with steam, avoiding protonup-qt. This can be achieved by testing games on the newest proton GE, instead of 9-24.
 - (Maybe) Add keyring to insert github SSH once per session.
 - (Linux 7.2) Setup webcam.
