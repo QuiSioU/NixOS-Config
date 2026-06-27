@@ -67,13 +67,13 @@
                 Keywords = "music;notation;composition;composing;arranging;making;sheet music;music notation software;lead sheet;leadsheet;score;full score;scorewriter;MIDI;musicxml;playback;instrument";
             };
         };
-        umpv = {
+        mpv = {
             type = "Application";
             name = "MPV Media Player";
             genericName = "Multimedia player";
             comment = "Play movies and songs";
             icon = "mpv";
-            exec = "umpv %U";
+            exec = "mpv --player-operation-mode=pseudo-gui -- %U";
             terminal = false;
             startupNotify = false;
             categories = [
@@ -84,7 +84,7 @@
                 "TV"
             ];
             settings = {
-                Keywords = "umpv;media;player;video;audio;tv";
+                Keywords = "mpv;media;player;video;audio;tv";
             };
             noDisplay = true;
         };
