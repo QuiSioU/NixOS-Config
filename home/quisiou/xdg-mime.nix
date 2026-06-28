@@ -14,8 +14,14 @@
             "image/png"                 = [ "imv.desktop" ];
             "image/jpeg"                = [ "imv.desktop" ];
             "video/mp4"                 = [ "mpv.desktop" ];
+            "text/plain"                = [ "nvim.desktop" ];
+            "text/script.python"        = [ "nvim.desktop" ];
+            "text/x-python"             = [ "nvim.desktop" ];
+        };
+        associations.added = {
             "text/plain"                = [ "nvim.desktop" "codium.desktop" ];
             "text/script.python"        = [ "nvim.desktop" "codium.desktop" ];
+            "text/x-python"             = [ "nvim.desktop" "codium.desktop" ];
         };
     };
 }
