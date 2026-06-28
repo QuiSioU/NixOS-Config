@@ -3,7 +3,7 @@
 
 ## TODO
 ### NixOS configuration
-- Set default apps for different file types (including EDITOR).
+- Find a way to set env vars without messing up zsh (including EDITOR).
 - Fix in NixOS kitty's exit confirmation on Super+X.
 - Automate NixOS garbage collector to run once per week, maybe on sundays.
 - Set NixOS config for GSR replay to run as script, only when games are running. I have OBS for normal recordings.
@@ -17,7 +17,6 @@
 - Use toml's meta name as entry name in quickshell theme listview.
 - Configure Hyprland dotfiles in such a way that you don't have to rewrite a whole block just for one setting.
 - Add orbit menu for favourite apps.
-- Add yazi bookmarks (or the equivalent goto).
 - Compact launcher and new topbar into single transforming bubbles.
 - Make lock screen (not login, lock).
 - Fix control center 1st app always opening on Workspace 1.

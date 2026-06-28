@@ -12,6 +12,7 @@
         ./theme.nix
         ./variables.nix
         ./xdg-desktop.nix
+        ./xdg-mime.nix
     ];
 
     home.username = "quisiou";
