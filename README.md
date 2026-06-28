@@ -14,7 +14,6 @@
 - (Linux 7.2) Setup webcam.
 
 ### Dotfiles
-- Somehow make changing theme update the ones in vscodium (or add in case of not existing).
 - Use toml's meta name as entry name in quickshell theme listview.
 - Fix control center 1st app always opening on Workspace 1.
 - Configure Hyprland dotfiles in such a way that you don't have to rewrite a whole block just for one setting.
@@ -24,7 +23,6 @@
 - Compact launcher and new topbar into single transforming bubbles.
 - Make lock screen (not login, lock).
 - Implement secondary actions on launcher (right-click/shitf+Enter), like desktop files provide.
-- Make zsh default terminal profile in VSCodium.
 
 ---
 
