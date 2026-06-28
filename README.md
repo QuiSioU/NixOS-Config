@@ -16,6 +16,7 @@
 ### Dotfiles
 - Use toml's meta name as entry name in quickshell theme listview.
 - Fix control center 1st app always opening on Workspace 1.
+- Fix z plane on widgets (should be higher).
 - Configure Hyprland dotfiles in such a way that you don't have to rewrite a whole block just for one setting.
 - Add orbit menu for favourite apps.
 - Add yazi bookmarks (or the equivalent goto).
