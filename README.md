@@ -1,12 +1,16 @@
 [//]: #(README.md)
 
 
+### Notes
+- At the beginning, SSH should be set manually, then clone the NixOS-Config via SSH, and then let rebuild clone Dotfiles via SSH too.
+
+---
+
 ## TODO
 ### NixOS configuration
 - Find a way to set env vars without messing up zsh (including EDITOR).
 - Fix in NixOS kitty's exit confirmation on Super+X.
 - Set NixOS config for GSR replay to run as script, only when games are running. I have OBS for normal recordings.
-- Add automatic SSH key generation for github, making Dotfiles then pull via SSH.
 - Find a way to make VSCodium compatible with Jupyter Notebooks.
 - Try to make ge-proton-bin be installed directly with steam, avoiding protonup-qt. This can be achieved by testing games on the newest proton GE, instead of 9-24.
 - (Maybe) Add keyring to insert github SSH once per session.
