@@ -89,6 +89,7 @@ in
             ms-toolsai.jupyter-keymap
             james-yu.latex-workshop
             sumneko.lua
+            jnoortheen.nix-ide
             ms-python.python
             ms-python.vscode-pylance
             ms-python.debugpy
