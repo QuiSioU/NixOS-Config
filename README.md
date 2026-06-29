@@ -19,11 +19,10 @@
 ### Dotfiles
 - Use toml's meta name as entry name in quickshell theme listview.
 - Configure Hyprland dotfiles in such a way that you don't have to rewrite a whole block just for one setting.
-- Add orbit menu for favourite apps.
 - Compact launcher and new topbar into single transforming bubbles.
 - Make lock screen (not login, lock).
 - Fix control center 1st app always opening on Workspace 1.
-- Implement secondary actions on launcher (right-click/shitf+Enter), like desktop files provide.
+- Implement secondary actions on launcher (right-click/shitf+Enter) and QuickApps, like desktop files provide.
 
 ---
 
