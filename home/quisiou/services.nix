@@ -13,7 +13,7 @@
         };
         Service = {
             Type = "oneshot";
-            ExecStart = "${pkgs.git}/bin/git clone https://github.com/QuiSioU/Dotfiles.git /home/quisiou/Dotfiles";
+            ExecStart = "${pkgs.git}/bin/git clone git@github.com:QuiSioU/Dotfiles.git /home/quisiou/Dotfiles";
             ExecStartPost = "${pkgs.systemd}/bin/systemctl --user start dotfiles-setup.service";
             StandardOutput = "journal+console";
             StandardError = "journal+console";
