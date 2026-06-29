@@ -5,7 +5,6 @@
 ### NixOS configuration
 - Find a way to set env vars without messing up zsh (including EDITOR).
 - Fix in NixOS kitty's exit confirmation on Super+X.
-- Automate NixOS garbage collector to run once per week, maybe on sundays.
 - Set NixOS config for GSR replay to run as script, only when games are running. I have OBS for normal recordings.
 - Add automatic SSH key generation for github, making Dotfiles then pull via SSH.
 - Find a way to make VSCodium compatible with Jupyter Notebooks.

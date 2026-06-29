@@ -6,6 +6,9 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    # Max number of generations showed on boot
+    boot.loader.systemd-boot.configurationLimit = 5;
+
     # Use latest kernel.
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
