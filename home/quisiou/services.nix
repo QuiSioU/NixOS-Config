@@ -41,7 +41,7 @@
                 echo "Running dotfiles setup..."
                 ${pkgs.nix}/bin/nix-shell -I nixpkgs=${pkgs.path} \
                     -p cmake glib pkg-config networkmanager alsa-lib ninja qt6.qtbase qt6.qtdeclarative spirv-tools \
-                    --run "export PATH=\$PATH:/run/current-system/sw/bin && /home/quisiou/Dotfiles/setup.sh -f"
+                    --run "export PATH=\$PATH:/run/current-system/sw/bin && /home/quisiou/Dotfiles/setup.sh -f -n"
             '';
             StandardOutput = "journal+console";
             StandardError = "journal+console";

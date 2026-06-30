@@ -8,11 +8,9 @@
 
 ## TODO
 ### NixOS configuration
-- Find a way to set env vars without messing up zsh (including EDITOR).
 - Fix in NixOS kitty's exit confirmation on Super+X.
-- Set NixOS config for GSR replay to run as script, only when games are running. I have OBS for normal recordings.
+- Set NixOS config for GSR replay to run as script only when games are running (OBS for normal recordings).
 - Find a way to make VSCodium compatible with Jupyter Notebooks.
-- Try to make ge-proton-bin be installed directly with steam, avoiding protonup-qt. This can be achieved by testing games on the newest proton GE, instead of 9-24.
 - (Maybe) Add keyring to insert github SSH once per session.
 - (Linux 7.2) Setup webcam.
 
