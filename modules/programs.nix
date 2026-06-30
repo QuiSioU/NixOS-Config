@@ -17,14 +17,7 @@
         ];
     };
     programs.gamemode.enable = true;            # Gamemode for steam games
-    programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        shellAliases = {
-            nrs = "sudo nixos-rebuild switch    --flake /home/quisiou/NixOS-Config#chirimbolo";
-            nrb = "sudo nixos-rebuild dry-build --flake /home/quisiou/NixOS-Config#chirimbolo";
-        };
-    };
+    programs.zsh.enable = true;
     programs.obs-studio = {
         enable = true;
         enableVirtualCamera = true;
