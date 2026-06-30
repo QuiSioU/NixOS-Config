@@ -8,6 +8,7 @@
 
 ## TODO
 ### NixOS configuration
+- Set up UEFI control without Win11 (and set battery limit to 80/85%)
 - Fix in NixOS kitty's exit confirmation on Super+X.
 - Set NixOS config for GSR replay to run as script only when games are running (OBS for normal recordings).
 - Find a way to make VSCodium compatible with Jupyter Notebooks.
@@ -16,7 +17,7 @@
 
 ### Dotfiles
 - Use toml's meta name as entry name in quickshell theme listview.
-- Configure Hyprland dotfiles in such a way that you don't have to rewrite a whole block just for one setting.
+- Add carousel mode to searchview entries.
 - Compact launcher and new topbar into single transforming bubbles.
 - Make lock screen (not login, lock).
 - Fix control center 1st app always opening on Workspace 1.
