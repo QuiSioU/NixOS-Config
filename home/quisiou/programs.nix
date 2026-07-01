@@ -48,6 +48,14 @@ in
             [ -f "$HOME/.config/zsh/user/env.zsh" ] && . "$HOME/.config/zsh/user/env.zsh"
         '';
         initContent = ''
+            # Fix kitty allways prompting for close confirmation
+            if test -n "$KITTY_INSTALLATION_DIR"; then
+                export KITTY_SHELL_INTEGRATION="enabled"
+                autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+                kitty-integration
+                unfunction kitty-integration
+            fi
+
             # Source default main config
             [ -f "$HOME/.config/zsh/default/main.zsh" ] && . "$HOME/.config/zsh/default/main.zsh"
 
