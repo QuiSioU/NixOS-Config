@@ -16,7 +16,6 @@
 - (Linux 7.2) Setup webcam.
 
 ### Dotfiles
-- Use toml's meta name as entry name in quickshell theme listview.
 - Add carousel mode to searchview entries.
 - Compact launcher and new topbar into single transforming bubbles.
 - Make lock screen (not login, lock).
