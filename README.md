@@ -15,20 +15,30 @@
 - (Linux 7.2) Setup webcam.
 
 ### Dotfiles
-- Add carousel mode to searchview entries.
-- Compact launcher and new topbar into single transforming bubbles.
-- Make lock screen (not login, lock).
+- Make workspace topbar part.
+- Make connections and system topbar part.
+- Replace EWW's user menu with hardware usage (by adding stuff to main pill in topbar).
+- Fix visual bugs in launcher and carousel display.
+- Improve lock screen visuals.
 - Fix control center 1st app always opening on Workspace 1.
 - Implement secondary actions on launcher (right-click/shitf+Enter) and QuickApps, like desktop files provide.
+- Optmize code for speed and resource consumption.
 
 ---
 
 ## Game launch options
 ### Geometry Dash
+**GE-Proton9-24**\
 `WINEDLLOVERRIDES="xinput1_4=n,b" %command%`
 
 ### Rocket League
+**GE-Proton9-24**\
 `WINEDLLOVERRIDES="winmm=n,b" __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia gamemoderun %command% -NoIPv6`
 
 ### The Witcher 3
-`__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only PROTON_ENABLE_WAYLAND=1 DXVK_ASYNC=1 PROTON_ENABLE_NGX_UPDATER=1 gamemoderun %command% --launcher-skip`
+**GE-Proton10-28** (latest)\
+`__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only PROTON_ENABLE_WAYLAND=1 DXVK_ASYNC=1 PROTON_ENABLE_NGX_UPDATER=1 gamemoderun %command%`
+
+### God of War
+**GE-Proton10-28** (latest)\
+`__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only PROTON_ENABLE_WAYLAND=1 PROTON_ENABLE_NGX_UPDATER=1 gamemoderun %command%`
