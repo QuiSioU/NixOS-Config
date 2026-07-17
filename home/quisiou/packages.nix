@@ -41,6 +41,7 @@
         # Desktop ecosystem
         hyprshot wl-clipboard cliphist
         awww eww quickshell
+        wlopm
 
         # Language support and LSP
         clang-tools
