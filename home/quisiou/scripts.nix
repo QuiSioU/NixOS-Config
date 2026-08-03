@@ -5,13 +5,13 @@
 
 let
     rocketLeagueReplay = pkgs.writeShellScriptBin "rl-replay" ''
-        mkdir -p /home/quisiou/Videos/RocketLeague
+        mkdir -p ${config.home.homeDirectory}/Videos/RocketLeague
 
         gpu-screen-recorder \
             -w eDP-1 \
             -a default_output -ac opus \
             -q very_high -k av1_10bit -cr limited -f 120 -fm cfr \
-            -o /home/quisiou/Videos/RocketLeague/ -c mp4 -r 30 \
+            -o ${config.home.homeDirectory}/Videos/RocketLeague/ -c mp4 -r 30 \
             &
         GSR_PID=$!
 

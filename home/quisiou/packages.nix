@@ -9,11 +9,17 @@
         bat duf dust tree ffmpeg jq poppler fd ripgrep fzf zoxide resvg imagemagick
         _7zz-rar
 
+        # More relevant terminal utils
+        inotify-tools usbutils
+
         # Text editors
         neovim
 
-        # Image editors
-        gimp inkscape
+        # Image editors and viewers
+        gimp inkscape imv
+
+        # Video viewer
+        mpv
 
         # Other editors
         blender
@@ -53,7 +59,5 @@
         
         # Other stuff
         bitwarden-desktop
-        mpv
-        imv
     ];
 }
