@@ -33,4 +33,24 @@
         enable = true;
         enableVirtualCamera = true;
     };
+    programs.nix-ld = {                         # Run unpatched dynamic binaries on NixOS.
+        enable = true;
+        libraries = with pkgs; [
+            stdenv.cc.cc.lib   # libstdc++ — needed by nearly everything (numpy, pandas, torch...)
+            zlib
+            openssl
+            curl
+            expat
+            libGL
+            glib
+            icu
+            fuse3
+            nss
+            xorg.libX11
+            xorg.libXext
+            xorg.libXrender
+            fontconfig
+            freetype
+        ];
+    };
 }

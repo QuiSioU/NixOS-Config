@@ -12,6 +12,12 @@
         # More relevant terminal utils
         inotify-tools usbutils
 
+        # Terminal (and tools)
+        kitty starship fastfetch pokeget-rs
+
+        # Python-related
+        uv
+
         # Text editors
         neovim
 
@@ -31,9 +37,6 @@
         # Emulators
         ryubing
         dolphin-emu
-
-        # Terminal (and tools)
-        kitty starship fastfetch pokeget-rs
 
         # File managers
         (yazi.override { _7zz = _7zz-rar; })    # Yazi with RAR extraction support
