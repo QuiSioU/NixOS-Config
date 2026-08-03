@@ -17,11 +17,17 @@
             url = "github:nix-community/nix-vscode-extensions";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        steam-config-nix = {
+            url = "github:different-name/steam-config-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, ... }: {
+    outputs = inputs@{ self, nixpkgs, home-manager, nix-vscode-extensions, steam-config-nix, ... }: {
         nixosConfigurations.chirimbolo = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
             modules = [
                 ./hosts/chirimbolo/configuration.nix
                 home-manager.nixosModules.home-manager

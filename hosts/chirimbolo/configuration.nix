@@ -13,16 +13,19 @@
         ./hardware-configuration.nix
 
         # Modules
-        ../../modules/boot.nix
-        ../../modules/networking.nix
-        ../../modules/locale.nix
         ../../modules/audio.nix
         ../../modules/bluetooth.nix
+        ../../modules/boot.nix
         ../../modules/fonts.nix
+        ../../modules/gc.nix
+        ../../modules/locale.nix
+        ../../modules/networking.nix
         ../../modules/programs.nix
         ../../modules/services.nix
         ../../modules/users.nix
-        ../../modules/gc.nix
+
+        # Specific file with steam launch options for every game
+        ./steam-games.nix
     ];
 
 
