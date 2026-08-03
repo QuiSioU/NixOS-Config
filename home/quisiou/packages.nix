@@ -24,9 +24,6 @@
         # Other editors
         blender
 
-        # Proton compatibility layer
-        protonup-qt
-
         # Music
         musescore muse-sounds-manager
         spotify
