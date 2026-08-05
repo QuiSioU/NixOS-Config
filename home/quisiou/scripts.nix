@@ -34,6 +34,7 @@ in
         CONFIG_KEYS_DIR="${config.home.homeDirectory}/.config/Ryujinx/system/"
         CONFIG_FIRMWARE_DIR="${config.home.homeDirectory}/.config/Ryujinx/bis/system/Contents/registered/"
         GAMES_DIR="$TARGET_DIR/games_dir"
+        MODS_DIR="$TARGET_DIR/mods_dir"
         CONFIG_FILE="${config.home.homeDirectory}/.config/Ryujinx/Config.json"
 
         if [ ! -f "$COMPLETION_FILE" ]; then
@@ -71,6 +72,10 @@ in
                 ${pkgs.jq}/bin/jq --arg dir "$GAMES_DIR" '.game_dirs = [$dir]' "$CONFIG_FILE" > "$TMP_FILE" \
                     && mv "$TMP_FILE" "$CONFIG_FILE"
             fi
+
+            $DRY_RUN_CMD echo "Creating mods directory..."
+            mkdir -p "$MODS_DIR"
+            ln -sf "$MODS_DIR" "${config.home.homeDirectory}/.config/Ryujinx/mods/contents"
         fi
     '';
     home.activation.setupPCSX2 = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
