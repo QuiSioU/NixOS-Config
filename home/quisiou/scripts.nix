@@ -26,13 +26,15 @@ in
         rocketLeagueReplay
     ];
 
-    home.activation.fetchRyujinxMetaFiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    home.activation.setupRyujinx = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         APP_FILES_DIR="${config.home.homeDirectory}/AppFiles"
         TARGET_DIR="$APP_FILES_DIR/Ryujinx"
         COMPLETION_FILE="$TARGET_DIR/.download_completed"
         TAR_GZ_FILENAME="$TARGET_DIR/ryujinx-meta-files.tar.gz"
         CONFIG_KEYS_DIR="${config.home.homeDirectory}/.config/Ryujinx/system/"
         CONFIG_FIRMWARE_DIR="${config.home.homeDirectory}/.config/Ryujinx/bis/system/Contents/registered/"
+        GAMES_DIR="$TARGET_DIR/games_dir"
+        CONFIG_FILE="${config.home.homeDirectory}/.config/Ryujinx/Config.json"
 
         if [ ! -f "$COMPLETION_FILE" ]; then
             export PATH="${pkgs.gnutar}/bin:${pkgs.gzip}/bin:$PATH"
@@ -60,9 +62,18 @@ in
             $DRY_RUN_CMD ln -sf \
                 "$TARGET_DIR"/firmware_dir/* \
                 "$CONFIG_FIRMWARE_DIR"
+
+            $DRY_RUN_CMD echo "Creating games directory..."
+            mkdir -p "$GAMES_DIR"
+            if [ -f "$CONFIG_FILE" ]; then
+                $DRY_RUN_CMD echo "Updating game_dirs in Ryujinx Config.json..."
+                TMP_FILE=$(mktemp)
+                ${pkgs.jq}/bin/jq --arg dir "$GAMES_DIR" '.game_dirs = [$dir]' "$CONFIG_FILE" > "$TMP_FILE" \
+                    && mv "$TMP_FILE" "$CONFIG_FILE"
+            fi
         fi
     '';
-    home.activation.fetchPCSX2MetaFiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    home.activation.setupPCSX2 = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         APP_FILES_DIR="${config.home.homeDirectory}/AppFiles"
         TARGET_DIR="$APP_FILES_DIR/PCSX2"
         BIOS_DIR="$TARGET_DIR/bios_dir"

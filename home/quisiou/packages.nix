@@ -35,9 +35,10 @@
         spotify
 
         # Emulators
-        ryubing
-        dolphin-emu
         pcsx2
+        # rpcs3     # Still broken, wait a bit before adding it
+        dolphin-emu
+        ryubing
 
         # File managers
         (yazi.override { _7zz = _7zz-rar; })    # Yazi with RAR extraction support
