@@ -45,5 +45,9 @@ in
                 && rm "$TAR_GZ_FILENAME" \
                 && touch "$COMPLETE_FILE"
         fi
+
+        if [ -f "$COMPLETE_FILE" ]; then
+            $DRY_RUN_CMD ln -sf "$TARGET_DIR"/keys_dir/* "${config.home.homeDirectory}"/.config/Ryujinx/system/
+        fi
     '';
 }
