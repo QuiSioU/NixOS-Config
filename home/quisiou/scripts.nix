@@ -47,7 +47,15 @@ in
         fi
 
         if [ -f "$COMPLETE_FILE" ]; then
-            $DRY_RUN_CMD ln -sf "$TARGET_DIR"/keys_dir/* "${config.home.homeDirectory}"/.config/Ryujinx/system/
+            $DRY_RUN_CMD echo "Linking keys..."
+            $DRY_RUN_CMD ln -sf \
+                "$TARGET_DIR"/keys_dir/* \
+                "${config.home.homeDirectory}"/.config/Ryujinx/system/
+
+            $DRY_RUN_CMD echo "Linking firmware..."
+            $DRY_RUN_CMD ln -sf \
+                "$TARGET_DIR"/firmware_dir/* \
+                "${config.home.homeDirectory}"/.config/Ryujinx/bis/system/Contents/registered/
         fi
     '';
 }
