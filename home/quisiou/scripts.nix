@@ -33,16 +33,17 @@ in
         TAR_GZ_FILENAME="$TARGET_DIR/ryujinx-meta-files.tar.gz"
 
         if [ ! -f "$COMPLETE_FILE" ]; then
+            export PATH="${pkgs.gnutar}/bin:${pkgs.gzip}/bin:$PATH"
+
             $DRY_RUN_CMD echo "Downloading Ryujinx meta files from Google Drive..."
 
             $DRY_RUN_CMD mkdir -p "$TARGET_DIR"
             
             $DRY_RUN_CMD ${pkgs.nix}/bin/nix-shell -p python3Packages.gdown \
-                --run "gdown 'https://drive.google.com/uc?id=1HrM-AxlxAxpNY32RcGXGboQLJzQOLXMT' -O '$TARGET_DIR/'"
-
-            
-
-            $DRY_RUN_CMD touch "$COMPLETE_FILE"
+                --run "gdown 'https://drive.google.com/uc?id=1HrM-AxlxAxpNY32RcGXGboQLJzQOLXMT' -O '$TARGET_DIR/'" \
+                && tar -xzf "$TAR_GZ_FILENAME" -C "$TARGET_DIR" \
+                && rm "$TAR_GZ_FILENAME" \
+                && touch "$COMPLETE_FILE"
         fi
     '';
 }
