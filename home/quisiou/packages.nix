@@ -37,6 +37,7 @@
         # Emulators
         ryubing
         dolphin-emu
+        pcsx2
 
         # File managers
         (yazi.override { _7zz = _7zz-rar; })    # Yazi with RAR extraction support
