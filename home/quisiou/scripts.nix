@@ -44,7 +44,7 @@ in
             $DRY_RUN_CMD mkdir -p "$TARGET_DIR"
             
             $DRY_RUN_CMD ${pkgs.nix}/bin/nix-shell -p python3Packages.gdown \
-                --run "gdown 'https://drive.google.com/uc?id=1HrM-AxlxAxpNY32RcGXGboQLJzQOLXMT' -O '$TARGET_DIR/'" \
+                --run "gdown 'https://drive.google.com/uc?id=1UuEqxq0jaH8oW2SyNILbWh6LHyKRh645' -O '$TARGET_DIR/'" \
                 && tar -xzf "$TAR_GZ_FILENAME" -C "$TARGET_DIR" \
                 && rm "$TAR_GZ_FILENAME" \
                 && touch "$COMPLETION_FILE"
