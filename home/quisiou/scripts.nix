@@ -36,7 +36,10 @@ in
         CONFIG_FIRMWARE_DIR="${config.home.homeDirectory}/.config/Ryujinx/bis/system/Contents/registered/"
         GAMES_DIR="$TARGET_DIR/games_dir"
         MODS_DIR="$TARGET_DIR/mods_dir"
+        SAVES_DIR="$TARGET_DIR/saves_dir"
         CONFIG_FILE="${config.home.homeDirectory}/.config/Ryujinx/Config.json"
+        CONFIG_SAVES_DIR="${config.home.homeDirectory}/.config/Ryujinx/bis/user/save"
+        CONFIG_MODS_DIR="${config.home.homeDirectory}/.config/Ryujinx/mods/contents"
 
         if [ ! -f "$COMPLETION_FILE" ]; then
             export PATH="${pkgs.gnutar}/bin:${pkgs.gzip}/bin:$PATH"
@@ -74,9 +77,21 @@ in
                     && mv "$TMP_FILE" "$CONFIG_FILE"
             fi
 
+            $DRY_RUN_CMD echo "Creating saves directory..."
+            mkdir -p "$SAVES_DIR"
+            mkdir -p "$(dirname "$CONFIG_SAVES_DIR")"
+            if [ -d "$CONFIG_SAVES_DIR" ] && [ ! -L "$CONFIG_SAVES_DIR" ]; then
+                $DRY_RUN_CMD rm -rf "$CONFIG_SAVES_DIR"
+            fi
+            $DRY_RUN_CMD ln -sfn "$SAVES_DIR" "$CONFIG_SAVES_DIR"
+
             $DRY_RUN_CMD echo "Creating mods directory..."
             mkdir -p "$MODS_DIR"
-            ln -sf "$MODS_DIR" "${config.home.homeDirectory}/.config/Ryujinx/mods/contents"
+            mkdir -p "$(dirname "$CONFIG_MODS_DIR")"
+            if [ -d "$CONFIG_MODS_DIR" ] && [ ! -L "$CONFIG_MODS_DIR" ]; then
+                $DRY_RUN_CMD rm -rf "$CONFIG_MODS_DIR"
+            fi
+            $DRY_RUN_CMD ln -sfn "$MODS_DIR" "$CONFIG_MODS_DIR"
         fi
     '';
     home.activation.setupPCSX2 = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
