@@ -49,7 +49,7 @@ in
             $DRY_RUN_CMD mkdir -p "$TARGET_DIR"
             
             $DRY_RUN_CMD ${pkgs.nix}/bin/nix-shell -p python3Packages.gdown \
-                --run "gdown 'https://drive.google.com/uc?id=1s6fLOsalUYLnsMQC8785-CqfVLqIWegr' -O '$TARGET_DIR/'" \
+                --run "gdown 'https://drive.google.com/uc?id=1s6fLOsalUYLnsMQC8785-CqfVLqIWegr' -O '$TAR_GZ_FILENAME'" \
                 && tar -xzf "$TAR_GZ_FILENAME" -C "$TARGET_DIR" \
                 && rm "$TAR_GZ_FILENAME" \
                 && touch "$COMPLETION_FILE"
@@ -57,19 +57,23 @@ in
 
         if [ -f "$COMPLETION_FILE" ]; then
             $DRY_RUN_CMD echo "Linking keys..."
-            mkdir -p "$CONFIG_KEYS_DIR"
-            $DRY_RUN_CMD ln -sf \
-                "$TARGET_DIR"/keys/* \
-                "$CONFIG_KEYS_DIR"
+            $DRY_RUN_CMD mkdir -p "$CONFIG_KEYS_DIR"
+            for key in "$TARGET_DIR"/keys/*; do
+                if [ -e "$key" ]; then
+                    $DRY_RUN_CMD ln -sf "$key" "$CONFIG_KEYS_DIR"
+                fi
+            done
 
             $DRY_RUN_CMD echo "Linking firmware..."
-            mkdir -p "$CONFIG_FIRMWARE_DIR"
-            $DRY_RUN_CMD ln -sf \
-                "$TARGET_DIR"/firmware/* \
-                "$CONFIG_FIRMWARE_DIR"
+            $DRY_RUN_CMD mkdir -p "$CONFIG_FIRMWARE_DIR"
+            for fw in "$TARGET_DIR"/firmware/*; do
+                if [ -e "$fw" ]; then
+                    $DRY_RUN_CMD ln -sf "$fw" "$CONFIG_FIRMWARE_DIR"
+                fi
+            done
 
             $DRY_RUN_CMD echo "Creating games directory..."
-            mkdir -p "$GAMES_DIR"
+            $DRY_RUN_CMD mkdir -p "$GAMES_DIR"
             if [ -f "$CONFIG_FILE" ]; then
                 $DRY_RUN_CMD echo "Updating game_dirs in Ryujinx Config.json..."
                 TMP_FILE=$(mktemp)
@@ -78,16 +82,16 @@ in
             fi
 
             $DRY_RUN_CMD echo "Creating saves directory..."
-            mkdir -p "$SAVES_DIR"
-            mkdir -p "$(dirname "$CONFIG_SAVES_DIR")"
+            $DRY_RUN_CMD mkdir -p "$SAVES_DIR"
+            $DRY_RUN_CMD mkdir -p "$(dirname "$CONFIG_SAVES_DIR")"
             if [ -d "$CONFIG_SAVES_DIR" ] && [ ! -L "$CONFIG_SAVES_DIR" ]; then
                 $DRY_RUN_CMD rm -rf "$CONFIG_SAVES_DIR"
             fi
             $DRY_RUN_CMD ln -sfn "$SAVES_DIR" "$CONFIG_SAVES_DIR"
 
             $DRY_RUN_CMD echo "Creating mods directory..."
-            mkdir -p "$MODS_DIR"
-            mkdir -p "$(dirname "$CONFIG_MODS_DIR")"
+            $DRY_RUN_CMD mkdir -p "$MODS_DIR"
+            $DRY_RUN_CMD mkdir -p "$(dirname "$CONFIG_MODS_DIR")"
             if [ -d "$CONFIG_MODS_DIR" ] && [ ! -L "$CONFIG_MODS_DIR" ]; then
                 $DRY_RUN_CMD rm -rf "$CONFIG_MODS_DIR"
             fi
@@ -150,10 +154,10 @@ in
         CRUDINI="${pkgs.crudini}/bin/crudini"
 
         $DRY_RUN_CMD echo "Creating games directory..."
-        mkdir -p "$GAMES_DIR"
+        $DRY_RUN_CMD mkdir -p "$GAMES_DIR"
         
         # Ensure Dolphin directories exist
-        mkdir -p "$CONFIG_DIR"
+        $DRY_RUN_CMD mkdir -p "$CONFIG_DIR"
 
         # Dolphin.ini file
         DOLPHIN_INI="$CONFIG_DIR/Dolphin.ini"
