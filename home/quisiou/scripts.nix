@@ -34,9 +34,9 @@ in
         TAR_GZ_FILENAME="$TARGET_DIR/ryujinx-meta-files.tar.gz"
         CONFIG_KEYS_DIR="${config.home.homeDirectory}/.config/Ryujinx/system/"
         CONFIG_FIRMWARE_DIR="${config.home.homeDirectory}/.config/Ryujinx/bis/system/Contents/registered/"
-        GAMES_DIR="$TARGET_DIR/games_dir"
-        MODS_DIR="$TARGET_DIR/mods_dir"
-        SAVES_DIR="$TARGET_DIR/saves_dir"
+        GAMES_DIR="$TARGET_DIR/games"
+        MODS_DIR="$TARGET_DIR/mods"
+        SAVES_DIR="$TARGET_DIR/saves"
         CONFIG_FILE="${config.home.homeDirectory}/.config/Ryujinx/Config.json"
         CONFIG_SAVES_DIR="${config.home.homeDirectory}/.config/Ryujinx/bis/user/save"
         CONFIG_MODS_DIR="${config.home.homeDirectory}/.config/Ryujinx/mods/contents"
@@ -49,7 +49,7 @@ in
             $DRY_RUN_CMD mkdir -p "$TARGET_DIR"
             
             $DRY_RUN_CMD ${pkgs.nix}/bin/nix-shell -p python3Packages.gdown \
-                --run "gdown 'https://drive.google.com/uc?id=1UuEqxq0jaH8oW2SyNILbWh6LHyKRh645' -O '$TARGET_DIR/'" \
+                --run "gdown 'https://drive.google.com/uc?id=1s6fLOsalUYLnsMQC8785-CqfVLqIWegr' -O '$TARGET_DIR/'" \
                 && tar -xzf "$TAR_GZ_FILENAME" -C "$TARGET_DIR" \
                 && rm "$TAR_GZ_FILENAME" \
                 && touch "$COMPLETION_FILE"
@@ -59,13 +59,13 @@ in
             $DRY_RUN_CMD echo "Linking keys..."
             mkdir -p "$CONFIG_KEYS_DIR"
             $DRY_RUN_CMD ln -sf \
-                "$TARGET_DIR"/keys_dir/* \
+                "$TARGET_DIR"/keys/* \
                 "$CONFIG_KEYS_DIR"
 
             $DRY_RUN_CMD echo "Linking firmware..."
             mkdir -p "$CONFIG_FIRMWARE_DIR"
             $DRY_RUN_CMD ln -sf \
-                "$TARGET_DIR"/firmware_dir/* \
+                "$TARGET_DIR"/firmware/* \
                 "$CONFIG_FIRMWARE_DIR"
 
             $DRY_RUN_CMD echo "Creating games directory..."
