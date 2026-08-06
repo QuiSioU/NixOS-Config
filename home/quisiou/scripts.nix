@@ -97,10 +97,10 @@ in
     home.activation.setupPCSX2 = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         APP_FILES_DIR="${config.home.homeDirectory}/AppFiles"
         TARGET_DIR="$APP_FILES_DIR/PCSX2"
-        BIOS_DIR="$TARGET_DIR/bios_dir"
+        BIOS_DIR="$TARGET_DIR/bios"
         COMPLETION_FILE="$TARGET_DIR/.download_completed"
         TAR_GZ_FILENAME="$TARGET_DIR/pcsx2-meta-files.tar.gz"
-        CONFIG_BIOS_DIR="${config.home.homeDirectory}/.config/PCSX2/bios/"
+        CONFIG_BIOS_DIR="${config.home.homeDirectory}/.config/PCSX2/bios"
 
         if [ ! -f "$COMPLETION_FILE" ]; then
             export PATH="${pkgs.gnutar}/bin:${pkgs.gzip}/bin:$PATH"
@@ -118,11 +118,12 @@ in
         fi
 
         if [ -f "$COMPLETION_FILE" ]; then
-            $DRY_RUN_CMD echo "Linking bios files..."
-            mkdir -p "$CONFIG_BIOS_DIR"
-            $DRY_RUN_CMD ln -sf \
-                "$BIOS_DIR"/* \
-                "$CONFIG_BIOS_DIR"
+            $DRY_RUN_CMD echo "Linking bios directory..."
+            mkdir -p "$(dirname "$CONFIG_BIOS_DIR")"
+            if [ -d "$CONFIG_BIOS_DIR" ] && [ ! -L "$CONFIG_BIOS_DIR" ]; then
+                $DRY_RUN_CMD rm -rf "$CONFIG_BIOS_DIR"
+            fi
+            $DRY_RUN_CMD ln -sfn "$BIOS_DIR" "$CONFIG_BIOS_DIR"
         fi
     '';
     home.activation.setupDolphin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
