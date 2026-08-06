@@ -98,9 +98,12 @@ in
         APP_FILES_DIR="${config.home.homeDirectory}/AppFiles"
         TARGET_DIR="$APP_FILES_DIR/PCSX2"
         BIOS_DIR="$TARGET_DIR/bios"
+        MEMCARDS_DIR="$TARGET_DIR/memcards"
+        GAMES_DIR="$TARGET_DIR/games"
         COMPLETION_FILE="$TARGET_DIR/.download_completed"
         TAR_GZ_FILENAME="$TARGET_DIR/pcsx2-meta-files.tar.gz"
         CONFIG_BIOS_DIR="${config.home.homeDirectory}/.config/PCSX2/bios"
+        CRUDINI="${pkgs.crudini}/bin/crudini"
 
         if [ ! -f "$COMPLETION_FILE" ]; then
             export PATH="${pkgs.gnutar}/bin:${pkgs.gzip}/bin:$PATH"
@@ -108,10 +111,10 @@ in
             $DRY_RUN_CMD echo "Downloading PCSX2 meta files from Google Drive..."
 
             $DRY_RUN_CMD mkdir -p "$TARGET_DIR"
+            $DRY_RUN_CMD mkdir -p "$BIOS_DIR"
             
             $DRY_RUN_CMD ${pkgs.nix}/bin/nix-shell -p python3Packages.gdown \
-                --run "gdown 'https://drive.google.com/uc?id=1th7MY7cNvm2pxHwY2q1hFcbLLOI878xN' -O '$TARGET_DIR/'" \
-                && mkdir -p "$BIOS_DIR" \
+                --run "gdown 'https://drive.google.com/uc?id=1th7MY7cNvm2pxHwY2q1hFcbLLOI878xN' -O '$TAR_GZ_FILENAME'" \
                 && tar -xzf "$TAR_GZ_FILENAME" -C "$BIOS_DIR" \
                 && rm "$TAR_GZ_FILENAME" \
                 && touch "$COMPLETION_FILE"
@@ -119,12 +122,25 @@ in
 
         if [ -f "$COMPLETION_FILE" ]; then
             $DRY_RUN_CMD echo "Linking bios directory..."
-            mkdir -p "$(dirname "$CONFIG_BIOS_DIR")"
+            $DRY_RUN_CMD mkdir -p "$(dirname "$CONFIG_BIOS_DIR")"
             if [ -d "$CONFIG_BIOS_DIR" ] && [ ! -L "$CONFIG_BIOS_DIR" ]; then
                 $DRY_RUN_CMD rm -rf "$CONFIG_BIOS_DIR"
             fi
             $DRY_RUN_CMD ln -sfn "$BIOS_DIR" "$CONFIG_BIOS_DIR"
         fi
+
+        $DRY_RUN_CMD echo "Creating games directory..."
+        $DRY_RUN_CMD mkdir -p "$GAMES_DIR"
+        
+        $DRY_RUN_CMD echo "Creating memory cards directory..."
+        $DRY_RUN_CMD mkdir -p "$MEMCARDS_DIR"
+
+        # PCSX2.ini file
+        PCSX2_INI="${config.home.homeDirectory}/.config/PCSX2/inis/PCSX2.ini"
+        $DRY_RUN_CMD mkdir -p "$(dirname "$PCSX2_INI")"
+        $DRY_RUN_CMD $CRUDINI --set "$PCSX2_INI"    UI          Theme           "darkfusionblue"
+        $DRY_RUN_CMD $CRUDINI --set "$PCSX2_INI"    Folders     MemoryCards     "$MEMCARDS_DIR"
+        $DRY_RUN_CMD $CRUDINI --set "$PCSX2_INI"    GameList    RecursivePaths  "$GAMES_DIR"
     '';
     home.activation.setupDolphin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         APP_FILES_DIR="${config.home.homeDirectory}/AppFiles"
