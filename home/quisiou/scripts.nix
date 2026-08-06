@@ -26,6 +26,7 @@ in
         rocketLeagueReplay
     ];
 
+    # Emulator setup scripts
     home.activation.setupRyujinx = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         APP_FILES_DIR="${config.home.homeDirectory}/AppFiles"
         TARGET_DIR="$APP_FILES_DIR/Ryujinx"
@@ -108,5 +109,32 @@ in
                 "$BIOS_DIR"/* \
                 "$CONFIG_BIOS_DIR"
         fi
+    '';
+    home.activation.setupDolphin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        APP_FILES_DIR="${config.home.homeDirectory}/AppFiles"
+        TARGET_DIR="$APP_FILES_DIR/Dolphin"
+        GAMES_DIR="$TARGET_DIR/games"
+        CONFIG_DIR="${config.home.homeDirectory}/.config/dolphin-emu"
+        CRUDINI="${pkgs.crudini}/bin/crudini"
+
+        $DRY_RUN_CMD echo "Creating games directory..."
+        mkdir -p "$GAMES_DIR"
+        
+        # Ensure Dolphin directories exist
+        mkdir -p "$CONFIG_DIR"
+
+        # Dolphin.ini file
+        DOLPHIN_INI="$CONFIG_DIR/Dolphin.ini"
+        $DRY_RUN_CMD $CRUDINI --set "$DOLPHIN_INI"  General     ISOPath0    "$GAMES_DIR"
+        $DRY_RUN_CMD $CRUDINI --set "$DOLPHIN_INI"  General     ISOPaths    1
+        $DRY_RUN_CMD $CRUDINI --set "$DOLPHIN_INI"  Interface   ThemeName   "Clean Lite"
+        $DRY_RUN_CMD $CRUDINI --set "$DOLPHIN_INI"  Settings    OSDFontSize 13
+        $DRY_RUN_CMD $CRUDINI --set "$DOLPHIN_INI"  Core        GFXBackend  "Vulkan"
+
+        # GFX.ini file
+        GFX_INI="$CONFIG_DIR/GFX.ini"
+        $DRY_RUN_CMD $CRUDINI --set "$GFX_INI"      Settings    ShowFPS     "True"
+        $DRY_RUN_CMD $CRUDINI --set "$GFX_INI"      Settings    ShowFTimes  "True"
+        $DRY_RUN_CMD $CRUDINI --set "$GFX_INI"      Settings    ShowSpeed   "True"
     '';
 }
