@@ -12,6 +12,7 @@
             "video"
             "audio"
             "gamemode"
+            "input"
         ];
         shell = pkgs.zsh;
     };
