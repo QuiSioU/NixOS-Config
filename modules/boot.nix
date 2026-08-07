@@ -3,19 +3,24 @@
 { config, pkgs, lib, ... }:
 
 {
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot = {
+        loader = {
+            systemd-boot = {
+                enable = true;
+                configurationLimit = 5; # Max number of generations showed on boot
+            };
+            efi.canTouchEfiVariables = true;
+        };
 
-    # Max number of generations showed on boot
-    boot.loader.systemd-boot.configurationLimit = 5;
+        # Use latest kernel.
+        kernelPackages = pkgs.linuxPackages_latest;
 
-    # Use latest kernel.
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
-    boot.kernelParams = [
-        "loglevel=3"
-    ];
-    boot.kernel.sysctl = {
-        "kernel.printk" = "3 4 1 3";
+        kernelParams = [
+            "loglevel=3"
+        ];
+        kernel.sysctl = {
+            "kernel.printk" = "3 4 1 3";
+        };
+        kernelModules = [ "hid_playstation" ];
     };
 }

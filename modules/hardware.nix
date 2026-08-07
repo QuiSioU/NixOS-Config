@@ -3,5 +3,8 @@
 { config, pkgs, lib, ... }:
 
 {
-    hardware.steam-hardware.enable;
+    hardware = {
+        steam-hardware.enable = true;
+        uinput.enable = true;
+    };
 }

@@ -18,8 +18,10 @@
         ../../modules/boot.nix
         ../../modules/fonts.nix
         ../../modules/gc.nix
+        ../../modules/hardware.nix
         ../../modules/locale.nix
         ../../modules/networking.nix
+        ../../modules/packages.nix
         ../../modules/programs.nix
         ../../modules/services.nix
         ../../modules/users.nix
@@ -76,11 +78,6 @@
     # --- Networking hostname --------------------------------------------
     networking.hostName = "chirimbolo";
 
-
-    # --- Allow unfree packages ------------------------------------------
-    nixpkgs.config.allowUnfree = true;
-
-
     # --- Security -------------------------------------------------------
     security.polkit.enable = true;
 
@@ -93,31 +90,4 @@
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "26.05";
-
-
-    # --- System packages ------------------------------------------------
-    # Specific outdated package versions required by other packages
-    nixpkgs.config.permittedInsecurePackages = [
-        "electron-39.8.10"
-    ];
-
-    # To expose a single binary from a package without installing the whole thing,
-    # use runCommand (for one binary) or linkFarm (for multiple):
-
-    # (pkgs.runCommand "name" { } ''
-    #     mkdir -p $out/bin
-    #     ln -s ${pkgs.some-package}/bin/binary $out/bin/binary
-    # '')
-
-    # (pkgs.linkFarm "name" [
-    #     { name = "bin/binary"; path = "${pkgs.some-package}/bin/binary"; }
-    # ])
-
-    environment.systemPackages = with pkgs; [
-        # Basic utilities
-        zsh wget curl
-
-        # Python3 with some libraries
-        (python3.withPackages (ps: with ps; [ jinja2 ]))
-    ];
 }
