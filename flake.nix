@@ -31,6 +31,7 @@
             modules = [
                 ./hosts/chirimbolo/configuration.nix
                 home-manager.nixosModules.home-manager
+                inputs.steam-config-nix.nixosModules.default
                 {
                     nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
                     home-manager.useGlobalPkgs = true;

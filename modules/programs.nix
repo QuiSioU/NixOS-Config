@@ -5,7 +5,6 @@
 {
     imports = [
         ./proton.nix
-        inputs.steam-config-nix.nixosModules.default
     ];
 
     programs.gpu-screen-recorder.enable = true; # Self-explanatory, innit?
