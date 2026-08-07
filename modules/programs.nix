@@ -45,9 +45,9 @@
             icu
             fuse3
             nss
-            xorg.libX11
-            xorg.libXext
-            xorg.libXrender
+            libx11
+            libxext
+            libxrender
             fontconfig
             freetype
         ];

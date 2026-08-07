@@ -10,8 +10,8 @@
         Unit = {
             Description = "Clone dotfiles repository from github";
             ConditionPathExists = "!${config.home.homeDirectory}/Dotfiles/.git";
-            After = [ "ssh-agent.service" "network-online.target" ];
-            Wants = [ "ssh-agent.service" "network-online.target" ];
+            After = [ "network-online.target" ];
+            Wants = [ "network-online.target" ];
         };
         Service = {
             Type = "oneshot";
@@ -24,7 +24,7 @@
 
                 # Initialize Git in-place
                 ${pkgs.git}/bin/git init
-                ${pkgs.git}/bin/git remote add origin git@github.com:QuiSioU/Dotfiles.git
+                ${pkgs.git}/bin/git remote add origin https://github.com/QuiSioU/Dotfiles.git
 
                 # Fetch remote refs
                 ${pkgs.git}/bin/git fetch origin
