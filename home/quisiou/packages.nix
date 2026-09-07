@@ -52,6 +52,7 @@
         hyprshot wl-clipboard cliphist
         awww eww quickshell
         wlopm
+        playerctl
         pavucontrol
         libnotify
         cava
