@@ -13,6 +13,7 @@
 
         # More relevant terminal utils
         inotify-tools usbutils
+        github-cli
 
         # Terminal (and tools)
         kitty starship fastfetch pokeget-rs
